@@ -51,14 +51,8 @@ public class ServiceFloating extends Service {
 		params = new WindowManager.LayoutParams(
 				WindowManager.LayoutParams.FILL_PARENT,
 				WindowManager.LayoutParams.FILL_PARENT,
-				// Allows the view to be on top of the StatusBar
-				WindowManager.LayoutParams.TYPE_SYSTEM_ERROR,
-				// Keeps the button presses from going to the background window
-				WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE |
-				// Enables the notification to recieve touch events
-				WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL |
-				// Draws over status bar
-				WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN,
+				WindowManager.LayoutParams.TYPE_SYSTEM_OVERLAY,
+				WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
 				PixelFormat.TRANSLUCENT);
 
 		params.gravity = Gravity.TOP | Gravity.LEFT;

@@ -49,9 +49,9 @@ public class ServiceFloating extends Service {
 		chatHead.setImageResource(R.drawable.floating2);
 
 		params = new WindowManager.LayoutParams(
-				WindowManager.LayoutParams.FILL_PARENT,
-				WindowManager.LayoutParams.FILL_PARENT,
-				WindowManager.LayoutParams.TYPE_SYSTEM_OVERLAY,
+				WindowManager.LayoutParams.WRAP_CONTENT,
+				WindowManager.LayoutParams.WRAP_CONTENT,
+				WindowManager.LayoutParams.TYPE_SYSTEM_ALERT,
 				WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
 				PixelFormat.TRANSLUCENT);
 
@@ -84,12 +84,14 @@ public class ServiceFloating extends Service {
 						break;
 					case MotionEvent.ACTION_MOVE:
 						if (startDrag_) {
-                            ServiceFloating.this.stopSelf();
+                            //ServiceFloating.this.stopSelf();
 							WindowManager.LayoutParams position = params;
 							position.x = (int)event.getRawX() - 100;
 							position.y = (int)event.getRawY() - 100;
 							windowManager.updateViewLayout(chatHead, position);
                             isMoving_ = true;
+						} else {
+							initiatePopupWindow(chatHead);
 						}
 						break;
 				}
